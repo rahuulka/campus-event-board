@@ -21,12 +21,23 @@ class MyEventsScreen extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('You have not posted any events yet.'));
+            return const Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.event_busy, size: 64, color: Colors.grey),
+                  SizedBox(height: 16),
+                  Text('You have not posted any events yet.',
+                      style: TextStyle(color: Colors.grey, fontSize: 16)),
+                ],
+              ),
+            );
           }
           return ListView.builder(
             padding: const EdgeInsets.all(12),
             itemCount: snapshot.data!.length,
-            itemBuilder: (context, index) => EventCard(event: snapshot.data![index]),
+            itemBuilder: (context, index) =>
+                EventCard(event: snapshot.data![index]),
           );
         },
       ),
