@@ -16,12 +16,27 @@ class _SignupScreenState extends State<SignupScreen> {
   String? _error;
 
   void _signup() async {
-    setState(() { _loading = true; _error = null; });
-    final auth = Provider.of<AuthService>(context, listen: false);
-    final error = await auth.signUp(_emailController.text.trim(), _passwordController.text.trim(), _nameController.text.trim());
-    if (error != null) setState(() { _error = error; _loading = false; });
-    else if (mounted) Navigator.pop(context);
+  if (_nameController.text.isEmpty || 
+      _emailController.text.isEmpty || 
+      _passwordController.text.isEmpty) {
+    setState(() { _error = 'Please fill in all fields.'; _loading = false; });
+    return;
   }
+  setState(() { _loading = true; _error = null; });
+  final auth = Provider.of<AuthService>(context, listen: false);
+  final error = await auth.signUp(
+    _emailController.text.trim(),
+    _passwordController.text.trim(),
+    _nameController.text.trim(),
+  );
+  if (mounted) {
+    setState(() => _loading = false);
+    if (error != null) {
+      setState(() => _error = error);
+    }
+    // No need to pop — AuthWrapper will auto-navigate to HomeScreen
+  }
+}
 
   @override
   Widget build(BuildContext context) {
