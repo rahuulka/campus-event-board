@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
-import '../../models/event_model.dart';
-import '../../services/auth_service.dart';
-import '../../services/firestore_service.dart';
-import '../../services/storage_service.dart';
+import '../../../models/event_model.dart';
+import '../../../services/auth_service.dart';
+import '../../../services/firestore_service.dart';
+import '../../../services/storage_service.dart';
 
 class CreateEventScreen extends StatefulWidget {
   const CreateEventScreen({super.key});
