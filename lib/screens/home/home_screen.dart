@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../services/auth_service.dart';
 import '../../services/firestore_service.dart';
 import '../../models/event_model.dart';
+import '../../providers/theme_provider.dart';
 import '../../widgets/event_card.dart';
 import '../events/create_event_screen.dart';
 import '../profile/profile_screen.dart';
@@ -31,10 +32,19 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final auth = Provider.of<AuthService>(context);
 
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Campus Events'),
         actions: [
+          IconButton(
+            icon: Icon(
+              themeProvider.isDark ? Icons.light_mode : Icons.dark_mode,
+            ),
+            tooltip: themeProvider.isDark ? 'Switch to Light' : 'Switch to Dark',
+            onPressed: themeProvider.toggle,
+          ),
           IconButton(
             icon: const Icon(Icons.notifications_outlined),
             tooltip: 'Notification Settings',
@@ -88,7 +98,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     selected: _selectedCategory == cat,
                     onSelected: (_) =>
                         setState(() => _selectedCategory = cat),
-                    selectedColor: Colors.deepPurple.shade100,
                   ),
                 );
               },

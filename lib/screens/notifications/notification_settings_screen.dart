@@ -62,7 +62,7 @@ class _NotificationSettingsScreenState
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(16),
-            color: Colors.deepPurple.shade50,
+            color: Colors.blue.shade900.withValues(alpha: 0.15),
             child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -71,7 +71,7 @@ class _NotificationSettingsScreenState
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.deepPurple,
+                    color: Colors.blue,
                   ),
                 ),
                 SizedBox(height: 4),
@@ -107,10 +107,10 @@ class _NotificationSettingsScreenState
                   ),
                   secondary: Icon(
                     _getCategoryIcon(cat),
-                    color: isOn ? Colors.deepPurple : Colors.grey,
+                    color: isOn ? Colors.blue : Colors.grey,
                   ),
                   value: isOn,
-                  activeColor: Colors.deepPurple,
+                  activeColor: Colors.blue,
                   onChanged: (val) => _toggle(cat, val),
                 );
               },

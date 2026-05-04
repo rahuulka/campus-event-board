@@ -56,7 +56,7 @@ class EventDetailScreen extends StatelessWidget {
                         onPressed: () => rsvped ? fs.cancelRsvp(event.id, uid) : fs.rsvpEvent(event.id, uid),
                         icon: Icon(rsvped ? Icons.check_circle : Icons.add_circle_outline),
                         label: Text(rsvped ? 'Cancel RSVP' : 'RSVP to this event'),
-                        style: ElevatedButton.styleFrom(minimumSize: const Size.fromHeight(50), backgroundColor: rsvped ? Colors.grey : Colors.deepPurple, foregroundColor: Colors.white),
+                        style: ElevatedButton.styleFrom(minimumSize: const Size.fromHeight(50), backgroundColor: rsvped ? Colors.grey : Colors.blue, foregroundColor: Colors.white),
                       );
                     },
                   ),
